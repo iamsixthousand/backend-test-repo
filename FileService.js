@@ -1,17 +1,16 @@
-import * as uuid from 'uuid';
-import * as path from 'path';
+// import * as uuid from 'uuid';
+// import * as path from 'path';
 
 class FileService {
-    saveFile(file) {
+    getFileName(file) {
         try {
-            const fileName = uuid.v4() + '.jpg';
-            const filePath = path.resolve('static', fileName);
-            file.mv(filePath);
-            return fileName;
+            const filename = file.filename;
+            return filename;
         } catch (error) {
             console.log(error);
         }
     }
+    // extend here
 }
 
 export default new FileService();

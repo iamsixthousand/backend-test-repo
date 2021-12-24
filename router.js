@@ -1,13 +1,14 @@
 import Router from "express";
-// import Post from "./Post.js";
 import PostController from "./PostController.js";
+import * as multerStorage from "./multerStorageSetup.js";
 
 const router = new Router();
+const { upload } = multerStorage;
 
-router.post('/posts', PostController.create); // all endpoints
+router.post('/posts', upload.single('picture'), PostController.create); // all endpoints
 router.get('/posts', PostController.getAll);
 router.get('/posts/:id', PostController.getOne);
-router.put('/posts', PostController.update);
+router.put('/posts', upload.single('picture'), PostController.update);
 router.delete('/posts/:id', PostController.delete);
 
 export default router;

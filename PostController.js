@@ -3,8 +3,9 @@ import PostService from "./PostService.js";
 class PostController {
     async create(req, res) { // add post
         try {
-            console.log(req.files); // cause of fileUpload added
-            const post = await PostService.create(req.body, req.files.picture);
+            // console.log(req.file); // cause of fileUpload added
+            // console.log(req.files); ??????? fileuploader dsnt wrk
+            const post = await PostService.create(req.body, req.file);
             return res.json(post); 
         } catch (error) {
             console.log(error);
